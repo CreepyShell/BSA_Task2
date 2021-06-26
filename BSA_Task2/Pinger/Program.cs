@@ -6,12 +6,12 @@ namespace Pinger
 {
     class Program
     {
-        private static Random random = new Random();
+        private static Random random = new Random();//это для того, что бы отличать какое сообщение куда и откуда пришло
         private static RabbitService service = new RabbitService();
         static void Main(string[] args)
         {
             if (service.IsEmptyQueue("pong") && service.IsEmptyQueue("ping"))//в очереди не должно быть больше одного сообщения так же как и
-                service.SendMessageToQueue("startedPong", "pong");//в пинг-понге больше одного мячика
+                service.SendMessageToQueue("startedPong", "pong");//в пинг-понге больше одного мячика :)
 
 
             service.ListenQueue("ping", (mess) =>
